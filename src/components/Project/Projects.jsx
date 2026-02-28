@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import "./Projects.css";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 
 const projects = [
   {
@@ -8,11 +9,7 @@ const projects = [
     description:
       "Gastronomy web application inspired by traditional Italian cuisine. Developed as a full-stack project using modern web technologies and a simple client-server architecture.",
     tech: "HTML · CSS · JavaScript · PHP · MySQL",
-    images: [
-      "./public/img/comida/1.png",
-      "./public/img/comida/2.png",
-      "./public/img/comida/3.png",
-    ],
+    images: ["img/comida/1.png", "img/comida/2.png", "img/comida/3.png"],
     github: "https://github.com/marcosfabricio3/Cucina-di-mamma",
     demo: "https://cucina-demo.lovestoblog.com/index.html",
     published: true,
@@ -22,11 +19,7 @@ const projects = [
     description:
       "Frontend project developed as a historical tribute to ONDA, a former Uruguayan interdepartmental transport company. The website presents a structured visual timeline highlighting key milestones in the company's legacy.",
     tech: "HTML · CSS · JavaScript",
-    images: [
-      "./public/img/ONDA/1.png",
-      "./public/img/ONDA/2.png",
-      "./public/img/ONDA/3.png",
-    ],
+    images: ["img/ONDA/1.png", "img/ONDA/2.png", "img/ONDA/3.png"],
     github: "https://github.com/marcosfabricio3/Project_ONDA_UTU",
     demo: "https://marcosfabricio3.github.io/Project_ONDA_UTU/index.html",
     published: true,
@@ -37,9 +30,9 @@ const projects = [
       "Historical tribute website for a former transportation company with structured content and nostalgic visual identity.",
     tech: "HTML · CSS · JavaScript",
     images: [
-      "./public/img/portfolio/1.png",
-      "./public/img/portfolio/2.png",
-      "./public/img/portfolio/3.png",
+      "img/portfolio/1.png",
+      "img/portfolio/2.png",
+      "img/portfolio/3.png",
     ],
     github: "https://github.com/marcosfabricio3/PersonalPortfolio",
     demo: "#",
@@ -50,11 +43,7 @@ const projects = [
     description:
       "Document management utility focused on automated batch renaming of PDF files based on customizable naming patterns and metadata extraction. The project aims to improve efficiency in administrative and archival workflows. Currently in active development.",
     tech: "React · CSS · JavaScript · Node.js · Electron",
-    images: [
-      "./public/img/comida/italian1.png.avif",
-      "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
-      "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
-    ],
+    images: ["#", "#", "#"],
     github: "https://github.com/marcosfabricio3/PDF_renamer",
     demo: "#",
     published: false,
@@ -64,11 +53,7 @@ const projects = [
     description:
       "Management application designed to centralize and organize operational data in a structured and intuitive interface. Built to simplify daily workflows and improve information tracking efficiency.",
     tech: "React · CSS · JavaScript · SQLite · Node.js · Electron",
-    images: [
-      "./public/img/comida/italian1.png.avif",
-      "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
-      "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
-    ],
+    images: ["#", "#", "#"],
     github: "https://github.com/marcosfabricio3/simple-manager-mobile",
     demo: "#",
     published: false,
@@ -120,8 +105,13 @@ function ProjectCard({ project, index }) {
           </div>
 
           <div className="carousel-controls">
-            <button onClick={prevSlide}>‹</button>
-            <button onClick={nextSlide}>›</button>
+            <button onClick={prevSlide} className="carousel-btn">
+              <HiChevronLeft size={28} />
+            </button>
+
+            <button onClick={nextSlide} className="carousel-btn">
+              <HiChevronRight size={28} />
+            </button>
           </div>
         </div>
       )}
