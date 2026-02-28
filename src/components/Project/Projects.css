@@ -159,6 +159,13 @@
   pointer-events: none;
 }
 
+.btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #999;
+}
+
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;

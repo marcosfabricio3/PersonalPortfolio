@@ -6,67 +6,72 @@ const projects = [
   {
     title: "Italian Recipe Platform",
     description:
-      "Web application focused on traditional Italian cuisine recipes with categorized navigation and responsive design.",
-    tech: "HTML · CSS · JavaScript",
+      "Gastronomy web application inspired by traditional Italian cuisine. Developed as a full-stack project using modern web technologies and a simple client-server architecture.",
+    tech: "HTML · CSS · JavaScript · PHP · MySQL",
     images: [
-      "./public/img/comida/italian1.png.avif",
-      "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
-      "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
+      "./public/img/comida/1.png",
+      "./public/img/comida/2.png",
+      "./public/img/comida/3.png",
     ],
-    github: "#",
-    demo: "#",
+    github: "https://github.com/marcosfabricio3/Cucina-di-mamma",
+    demo: "https://cucina-demo.lovestoblog.com/index.html",
+    published: true,
   },
   {
     title: "Transport Company Tribute Website",
     description:
-      "Historical tribute website for a former transportation company with structured content and nostalgic visual identity.",
+      "Frontend project developed as a historical tribute to ONDA, a former Uruguayan interdepartmental transport company. The website presents a structured visual timeline highlighting key milestones in the company's legacy.",
     tech: "HTML · CSS · JavaScript",
     images: [
-      "./public/img/comida/italian1.png.avif",
-      "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
-      "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
+      "./public/img/ONDA/1.png",
+      "./public/img/ONDA/2.png",
+      "./public/img/ONDA/3.png",
     ],
-    github: "#",
-    demo: "#",
+    github: "https://github.com/marcosfabricio3/Project_ONDA_UTU",
+    demo: "https://marcosfabricio3.github.io/Project_ONDA_UTU/index.html",
+    published: true,
   },
   {
-    title: "Transport Company Tribute Website",
+    title: "Web Portfolio",
     description:
       "Historical tribute website for a former transportation company with structured content and nostalgic visual identity.",
     tech: "HTML · CSS · JavaScript",
     images: [
-      "./public/img/comida/italian1.png.avif",
-      "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
-      "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
+      "./public/img/portfolio/1.png",
+      "./public/img/portfolio/2.png",
+      "./public/img/portfolio/3.png",
     ],
-    github: "#",
+    github: "https://github.com/marcosfabricio3/PersonalPortfolio",
     demo: "#",
+    published: true,
   },
   {
-    title: "Transport Company Tribute Website",
+    title: "Work in Progress",
     description:
-      "Historical tribute website for a former transportation company with structured content and nostalgic visual identity.",
-    tech: "HTML · CSS · JavaScript",
+      "Document management utility focused on automated batch renaming of PDF files based on customizable naming patterns and metadata extraction. The project aims to improve efficiency in administrative and archival workflows. Currently in active development.",
+    tech: "React · CSS · JavaScript · Node.js · Electron",
     images: [
       "./public/img/comida/italian1.png.avif",
       "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
       "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
     ],
-    github: "#",
+    github: "https://github.com/marcosfabricio3/PDF_renamer",
     demo: "#",
+    published: false,
   },
   {
-    title: "Transport Company Tribute Website",
+    title: "Work in Progress",
     description:
-      "Historical tribute website for a former transportation company with structured content and nostalgic visual identity.",
-    tech: "HTML · CSS · JavaScript",
+      "Management application designed to centralize and organize operational data in a structured and intuitive interface. Built to simplify daily workflows and improve information tracking efficiency.",
+    tech: "React · CSS · JavaScript · SQLite · Node.js · Electron",
     images: [
       "./public/img/comida/italian1.png.avif",
       "./public/img/comida/albondigas-caseras-de-cerdo-con-salsa-barbacoa.webp",
       "./public/img/comida/54e2d4dc41595417e01f7a144a20afe3.jpg",
     ],
-    github: "#",
+    github: "https://github.com/marcosfabricio3/simple-manager-mobile",
     demo: "#",
+    published: false,
   },
 ];
 
@@ -94,37 +99,45 @@ function ProjectCard({ project, index }) {
       transition={{ delay: index * 0.2 }}
       viewport={{ once: true }}
     >
-      <div className="carousel">
-        <motion.img
-          key={current}
-          src={project.images[current]}
-          alt={project.title}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        />
-        <div className="carousel-indicators">
-          {project.images.map((_, i) => (
-            <span
-              key={i}
-              className={i === current ? "indicator active" : "indicator"}
-              onClick={() => setCurrent(i)}
-            />
-          ))}
-        </div>
+      {project.images.length > 0 && project.published && (
+        <div className="carousel">
+          <motion.img
+            key={current}
+            src={project.images[current]}
+            alt={project.title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          />
+          <div className="carousel-indicators">
+            {project.images.map((_, i) => (
+              <span
+                key={i}
+                className={i === current ? "indicator active" : "indicator"}
+                onClick={() => setCurrent(i)}
+              />
+            ))}
+          </div>
 
-        <div className="carousel-controls">
-          <button onClick={prevSlide}>‹</button>
-          <button onClick={nextSlide}>›</button>
+          <div className="carousel-controls">
+            <button onClick={prevSlide}>‹</button>
+            <button onClick={nextSlide}>›</button>
+          </div>
         </div>
-      </div>
+      )}
 
       <h3>{project.title}</h3>
       <p>{project.description}</p>
       <span className="tech">{project.tech}</span>
 
       <div className="project-buttons">
-        <a href={project.demo} className="btn primary">
+        <a
+          href={project.published ? project.demo : undefined}
+          className={`btn primary ${!project.published ? "disabled" : ""}`}
+          onClick={(e) => {
+            if (!project.published) e.preventDefault();
+          }}
+        >
           Live Demo
         </a>
         <a href={project.github} className="btn secondary">
