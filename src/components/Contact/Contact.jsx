@@ -77,11 +77,11 @@ export default function Contact() {
             <FaGithub />
           </a>
 
-          <a href="#" target="_blank">
+          <a href="https://linkedin.com/in/marcosgarcía-97uru" target="_blank">
             <FaLinkedin />
           </a>
 
-          <a href="mailto:tuemail@gmail.com">
+          <a href="mailto:marcosfabricio633@gmail.com">
             <FaEnvelope />
           </a>
         </div>
